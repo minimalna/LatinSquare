@@ -1,3 +1,5 @@
+[![Java CI with Gradle](https://github.com/minimalna/LatinSquare/actions/workflows/gradle.yml/badge.svg)](https://github.com/minimalna/LatinSquare/actions/workflows/gradle.yml)
+
 # Latin Square Validator
 
 Takes an N*N size (2-dimensional) matrix and checks it values to determine whether it is a latin square.

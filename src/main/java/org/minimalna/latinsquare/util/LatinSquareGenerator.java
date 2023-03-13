@@ -9,11 +9,8 @@ public class LatinSquareGenerator {
      * @return an n*n size valid latin square
      */
     public static int[][] generateLatinSquare(int size) {
-        int[] base = IntStream.rangeClosed(1, size).toArray();
-
         int[][] latin = new int[size][size];
-
-        latin[0] = base;
+        latin[0] = IntStream.rangeClosed(1, size).toArray();
 
         for (int i = 1; i < size; i++) {
             for (int j = 0; j < size; j++) {
