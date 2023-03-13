@@ -1,4 +1,4 @@
-[![Java CI with Gradle](https://github.com/minimalna/LatinSquare/actions/workflows/gradle.yml/badge.svg)](https://github.com/minimalna/LatinSquare/actions/workflows/gradle.yml)
+[![Java CI with Gradle](https://github.com/minimalna/LatinSquare/actions/workflows/ci.yml/badge.svg)](https://github.com/minimalna/LatinSquare/actions/workflows/ci.yml)
 
 # Latin Square Validator
 
