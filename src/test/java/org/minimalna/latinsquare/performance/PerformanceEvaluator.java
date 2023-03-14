@@ -17,7 +17,6 @@ public class PerformanceEvaluator {
 
         int i = 0;
         while (i <= nrOfRuns) {
-//            System.gc();
             int[][] sample = LatinSquareGenerator.generateLatinSquare(matrixSize);
             long startTime = System.currentTimeMillis();
             validator.validate(sample);

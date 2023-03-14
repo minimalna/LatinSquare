@@ -15,10 +15,10 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class PerformanceChartsTest {
-    private static final List<Integer> matrixSizes = IntStream.iterate(1, n -> n <= 600, n -> n + 50).boxed().toList();
+    private static final List<Integer> matrixSizes = IntStream.iterate(1, n -> n <= 1000, n -> n == 1 ? n + 99 : n + 100).boxed().toList();
     private static final LatinSquareInPlaceValidator IN_PLACE_VALIDATOR = new LatinSquareInPlaceValidator();
     private static final LatinSquareExtraSpaceValidator EXTRA_SPACE_VALIDATOR = new LatinSquareExtraSpaceValidator();
-    private static final int NR_OF_RUNS = 50;
+    private static final int NR_OF_RUNS = 30;
 
     @Test
     public void chart() throws IOException {

@@ -45,5 +45,5 @@ artifacts {
 test {
     useJUnitPlatform()
 
-//    exclude '**/performance/**'
+    exclude '**/performance/**'
 }
