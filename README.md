@@ -15,3 +15,6 @@ each occurring exactly once in each row and exactly once in each column. An exam
 
 This corresponds to { (1, 1, 1), (1, 2, 2), (1, 3, 3), (2, 1, 2), (2, 2, 3), (2, 3, 1), (3, 1, 3), (3, 2, 1), (3, 3, 2) },
 where for example the triple (2, 3, 1) means that in row 2 and column 3 there is the symbol 1.
+
+
+![Performance chart up to 600](charts/Performance_600.jpeg)
