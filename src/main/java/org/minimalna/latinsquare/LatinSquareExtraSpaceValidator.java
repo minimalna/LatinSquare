@@ -22,7 +22,9 @@ public class LatinSquareExtraSpaceValidator implements LatinSquareValidator {
         if (ArrayUtils.isEmpty(square)) return false;
 
         int size = square.length;
-        if (size == 1) return true;
+        if (size == 1) {
+            return square[0][0] == 1;
+        }
 
         List<Set<Integer>> columns = new ArrayList<>(size);
         Set<Integer> currentRow = new HashSet<>(size);
