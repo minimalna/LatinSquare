@@ -104,6 +104,15 @@ Presumably you already have Java JRE installed on your machine, and Java classpa
 - Extract the package you downloaded
 - From `/bin` folder, run the executable compatible with your platform
 
+> Examples of running from console:
+
+<p align="center">
+<img src="doc/LatinSquare_in_use.png"  width="40%" height="30%">
+</p>
+<p align="center">
+<img src="doc/Invalid_LatinSquare_in_use.png"  width="40%" height="30%">
+</p>
+
 ## Usage as stand-alone application
 
 Following the steps described in the upper section and starting the application, you are now able to validate any `n*n`
