@@ -11,13 +11,13 @@ class PerformanceTest {
     private static final int NR_OF_RUNS = 100;
 
     @Test
-    public void evaluateNonCachingPerformance() {
+    public void evaluateInPlaceValidationPerformance() {
         LatinSquareValidator lsv = new LatinSquareInPlaceValidator();
         PerformanceEvaluator.evaluatePerformance(lsv, MATRIX_SIZE, NR_OF_RUNS);
     }
 
     @Test
-    public void evaluateCachingPerformance() {
+    public void evaluateExtraSpaceValidationPerformance() {
         LatinSquareValidator lsv = new LatinSquareExtraSpaceValidator();
         PerformanceEvaluator.evaluatePerformance(lsv, MATRIX_SIZE, NR_OF_RUNS);
     }

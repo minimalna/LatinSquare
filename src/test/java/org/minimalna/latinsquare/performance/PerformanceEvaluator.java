@@ -6,6 +6,13 @@ import org.minimalna.latinsquare.util.LatinSquareGenerator;
 public class PerformanceEvaluator {
 
     public static void evaluatePerformance(LatinSquareValidator validator, int matrixSize, int nrOfRuns) {
+        long averageRuntime = getAverageRuntime(validator, matrixSize, nrOfRuns);
+
+        System.out.printf("Average time taken for %d validations of %d * %d grid: %d milliseconds.%n",
+                nrOfRuns, matrixSize, matrixSize, averageRuntime);
+    }
+
+    public static int getAverageRuntime(LatinSquareValidator validator, int matrixSize, int nrOfRuns){
         long accumulatedRuntime = 0L;
 
         int i = 0;
@@ -19,8 +26,6 @@ public class PerformanceEvaluator {
             }
             i++;
         }
-
-        System.out.printf("Average time taken for %d validations of %d * %d grid: %d milliseconds.%n",
-                nrOfRuns, matrixSize, matrixSize, accumulatedRuntime / nrOfRuns);
+        return (int) accumulatedRuntime / nrOfRuns;
     }
 }
