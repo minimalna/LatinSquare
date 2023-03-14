@@ -21,7 +21,9 @@ public class LatinSquareInPlaceValidator implements LatinSquareValidator {
         if (ArrayUtils.isEmpty(square)) return false;
 
         int size = square.length;
-        if (size == 1) return true;
+        if (size == 1) {
+            return square[0][0] == 1;
+        }
 
         for (int i = 0; i < size; i++) {
             Set<Integer> row = Arrays.stream(square[i])

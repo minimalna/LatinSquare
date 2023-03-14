@@ -30,12 +30,18 @@ class LatinSquareValidatorTest {
 
     @ParameterizedTest
     @MethodSource("provideValidators")
-    void testValidate1CellSquare(LatinSquareValidator validator) {
+    void testValidate1CellValue1Square(LatinSquareValidator validator) {
         int[][] grid = new int[][]{{1}};
 
         Assertions.assertTrue(validator.validate(grid));
     }
+    @ParameterizedTest
+    @MethodSource("provideValidators")
+    void testValidate1CellNonValue1Square(LatinSquareValidator validator) {
+        int[][] grid = new int[][]{{2}};
 
+        Assertions.assertFalse(validator.validate(grid));
+    }
     @ParameterizedTest
     @MethodSource("provideValidators")
     void testValidate3rowsValidSquare(LatinSquareValidator validator) {
