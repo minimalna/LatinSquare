@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static org.minimalna.latinsquare.util.ValidationUtils.isInRange;
+
 public class LatinSquareInPlaceValidator implements LatinSquareValidator {
 
     /**
@@ -27,7 +29,7 @@ public class LatinSquareInPlaceValidator implements LatinSquareValidator {
 
         for (int i = 0; i < size; i++) {
             Set<Integer> row = Arrays.stream(square[i])
-                    .filter(v -> (v >= 1 && v <= size))
+                    .filter(v -> isInRange(v, size))
                     .boxed()
                     .collect(Collectors.toSet());
 

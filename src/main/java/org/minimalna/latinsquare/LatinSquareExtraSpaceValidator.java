@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.minimalna.latinsquare.util.ValidationUtils.isInRange;
+
 public class LatinSquareExtraSpaceValidator implements LatinSquareValidator {
 
     /**
@@ -37,7 +39,7 @@ public class LatinSquareExtraSpaceValidator implements LatinSquareValidator {
                 Set<Integer> currentCol = columns.get(j);
                 int currentValue = square[i][j];
 
-                if (isInRange(size, currentValue)) {
+                if (isInRange(currentValue, size)) {
                     currentCol.add(currentValue);
                     currentRow.add(currentValue);
                 } else {
@@ -53,9 +55,5 @@ public class LatinSquareExtraSpaceValidator implements LatinSquareValidator {
         }
 
         return true;
-    }
-
-    private static boolean isInRange(int maxValue, int value) {
-        return value >= 1 && value <= maxValue;
     }
 }
