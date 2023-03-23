@@ -2,14 +2,14 @@ package org.minimalna.latinsquare.util;
 
 import java.util.stream.IntStream;
 
-public class SudokuGenerator {
+public class SudokuGenerator implements SquareGenerator{
     /**
      * Generates an n*n int matrix containing values from 1 to size inclusive, representing a valid sudoku.
      *
      * @param size the size of the inner grid in the Sudoku puzzle
      * @return an n^2*n^2 size valid latin square
      */
-    public static int[][] generateSudoku(int size) {
+    public int[][] generate(int size) {
         int totalSize = size * size;
 
         int[][] sudoku = new int[totalSize][totalSize];

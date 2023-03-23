@@ -2,13 +2,13 @@ package org.minimalna.latinsquare.util;
 
 import java.util.stream.IntStream;
 
-public class LatinSquareGenerator {
+public class LatinSquareGenerator implements SquareGenerator{
     /**
      * Generates an n*n int matrix containing values from 1 to size inclusive.
      * @param size the size of the square
      * @return an n*n size valid latin square
      */
-    public static int[][] generateLatinSquare(int size) {
+    public int[][] generate(int size) {
         int[][] latin = new int[size][size];
         latin[0] = IntStream.rangeClosed(1, size).toArray();
 
