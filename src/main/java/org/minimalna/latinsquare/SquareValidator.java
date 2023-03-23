@@ -1,6 +1,5 @@
 package org.minimalna.latinsquare;
 
-public interface SudokuValidator extends SquareValidator {
-
+public interface SquareValidator {
     boolean validate(int[][] square);
 }

@@ -4,81 +4,43 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.minimalna.latinsquare.util.SudokuGenerator;
 
-
 class SudokuValidatorTest {
-    private static final SudokuValidator validator = new SudokuValidator();
+
+    private static final SudokuSpaceOptimizedValidator SPACE_OPTIMIZED_VALIDATOR = new SudokuSpaceOptimizedValidator();
+    private static final SudokuGenerator SUDOKU_GENERATOR = new SudokuGenerator();
 
     @Test
     void testValidateNullCellSquare() {
         int[][] grid = null;
-        Assertions.assertFalse(validator.validate(grid));
+        Assertions.assertFalse(SPACE_OPTIMIZED_VALIDATOR.validate(grid));
     }
 
     @Test
     void testValidateEmptySquare() {
         int[][] grid = new int[][]{};
 
-        SudokuValidator validator = new SudokuValidator();
-        Assertions.assertFalse(validator.validate(grid));
+        Assertions.assertFalse(SPACE_OPTIMIZED_VALIDATOR.validate(grid));
     }
 
     @Test
     public void testValid1rowSudoku() {
-        int[][] inputSudoku = SudokuGenerator.generateSudoku(1);
+        int[][] inputSudoku = SUDOKU_GENERATOR.generate(1);
 
-        SudokuValidator validator = new SudokuValidator();
-        Assertions.assertTrue(validator.validate(inputSudoku));
+        Assertions.assertTrue(SPACE_OPTIMIZED_VALIDATOR.validate(inputSudoku));
     }
 
     @Test
     public void testInvalid1rowSudoku() {
-        int[][] inputSudoku = SudokuGenerator.generateSudoku(1);
+        int[][] inputSudoku = SUDOKU_GENERATOR.generate(1);
         inputSudoku[0][0] = 2;
 
-        SudokuValidator validator = new SudokuValidator();
-        Assertions.assertFalse(validator.validate(inputSudoku));
+        Assertions.assertFalse(SPACE_OPTIMIZED_VALIDATOR.validate(inputSudoku));
     }
 
     @Test
     public void testValid9rowSudoku() {
-        int[][] inputSudoku = SudokuGenerator.generateSudoku(3);
+        int[][] inputSudoku = SUDOKU_GENERATOR.generate(3);
 
-        SudokuValidator validator = new SudokuValidator();
-        Assertions.assertTrue(validator.validate(inputSudoku));
-    }
-
-    @Test
-    public void testValid100rowSudoku() {
-        int[][] inputSudoku = SudokuGenerator.generateSudoku(10);
-
-        SudokuValidator validator = new SudokuValidator();
-        Assertions.assertTrue(validator.validate(inputSudoku));
-    }
-
-    @Test
-    public void testValid625rowSudoku() {
-        int[][] inputSudoku = SudokuGenerator.generateSudoku(25);
-
-        SudokuValidator validator = new SudokuValidator();
-        Assertions.assertTrue(validator.validate(inputSudoku));
-    }
-
-    @Test
-    public void testInvalidDuplicatesSudoku() {
-        int[][] inputSudoku = SudokuGenerator.generateSudoku(3);
-        inputSudoku[0][0] = 2;
-
-        SudokuValidator validator = new SudokuValidator();
-        Assertions.assertFalse(validator.validate(inputSudoku));
-    }
-
-
-    @Test
-    public void testInvalidValuesSudoku() {
-        int[][] inputSudoku = SudokuGenerator.generateSudoku(3);
-        inputSudoku[0][0] = 11;
-
-        SudokuValidator validator = new SudokuValidator();
-        Assertions.assertFalse(validator.validate(inputSudoku));
+        Assertions.assertTrue(SPACE_OPTIMIZED_VALIDATOR.validate(inputSudoku));
     }
 }

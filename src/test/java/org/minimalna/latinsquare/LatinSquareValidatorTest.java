@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 class LatinSquareValidatorTest {
     private static final LatinSquareInPlaceValidator IN_PLACE_VALIDATOR = new LatinSquareInPlaceValidator();
     private static final LatinSquareExtraSpaceValidator EXTRA_SPACE_VALIDATOR = new LatinSquareExtraSpaceValidator();
+    private static final LatinSquareGenerator LATIN_SQUARE_GENERATOR = new LatinSquareGenerator();
 
     @ParameterizedTest
     @MethodSource("provideValidators")
@@ -52,7 +53,7 @@ class LatinSquareValidatorTest {
     @ParameterizedTest
     @MethodSource("provideValidators")
     void testValidate10rowValidSquare(LatinSquareValidator validator) {
-        int[][] grid = LatinSquareGenerator.generateLatinSquare(10);
+        int[][] grid = LATIN_SQUARE_GENERATOR.generate(10);
 
         Assertions.assertTrue(validator.validate(grid));
     }
@@ -60,7 +61,7 @@ class LatinSquareValidatorTest {
     @ParameterizedTest
     @MethodSource("provideValidators")
     void testValidate1000rowValidSquare(LatinSquareValidator validator) {
-        int[][] grid = LatinSquareGenerator.generateLatinSquare(1000);
+        int[][] grid = LATIN_SQUARE_GENERATOR.generate(1000);
 
         Assertions.assertTrue(validator.validate(grid));
     }
@@ -92,7 +93,7 @@ class LatinSquareValidatorTest {
     @ParameterizedTest
     @MethodSource("provideValidators")
     void testValidate10rowInvalidDuplicateInRowAndColSquare(LatinSquareValidator validator) {
-        int[][] grid = LatinSquareGenerator.generateLatinSquare(10);
+        int[][] grid = LATIN_SQUARE_GENERATOR.generate(10);
         grid[0][1] = grid[0][0];
 
         Assertions.assertFalse(validator.validate(grid));

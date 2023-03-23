@@ -33,6 +33,18 @@ to `O(n^2 + n) -> O(n^2)`. It stores all the columns values in a dedicated list 
 while the extra space required for the rows validation is always just `n` because the allocated space is reused with
 each row iteration.
 
+### 3. Sudoku validator
+
+In order to check the performance of the Sudoku validator solution, performance tests were also performed to check
+scalability.
+This method is called space optimized as it checks the rows and columns of the matrix, iterating over it only once for
+each row and once for each column. The optimized space usage is derived from the approach to use only a `n*Sqrt(n)` size
+to store the rows that build up a complete row of subgrids at once. After building up a particular subgrid array while
+iterating over the main matrix, the
+subgrids are getting immediately validated and the space reused. Thus, the rough time complexity corresponds to
+`O(2 *n^2)`, while space complexity is `O(n*Sqrt(n) + 2*n)` given the approach mentioned above, plus the size taken up
+by current row/column.
+
 ## Performance comparison
 
 While the rough time complexity of both of the solutions in `O(n^2)`, we already saw in the previous sections that there
@@ -48,7 +60,7 @@ matrix, using a step of `50` and the time value being the average calculated fro
 avoid warmup bias. The runtime calculation strictly includes only the validation runtimes, being free from any
 additional code-induced tasks.
 <p align="center">
-<img src="charts/Performance_600.jpeg"  width="70%" height="30%">
+<img src="charts/LatinSquare_600.jpeg"  width="70%" height="30%">
 </p>
 
 As the chart above suggests, the performance is indeed better for extra-space validation for smaller matrices (on my
@@ -56,14 +68,13 @@ local machine up to 370 rows and columns). Above that we can see that in-place v
 results. In order to further understand the magnitude of the performance discrepancy for even larger datasets, I created
 another runtime comparison for up to a `2000*2000` cells size.
 <p align="center">
-<img src="charts/Performance_2000.jpeg"  width="70%" height="30%">
+<img src="charts/LatinSquare_2000.jpeg"  width="70%" height="30%">
 </p>
 
 This performance test result shows an increase of the runtime gap between the two solutions, in-place validation
 outperforming the extra-space validation in a significant manner. This might be due to Java's memory management as in
 case of extra-space validation it also needs to manage a large dataset consisting of `4.000.000` entries for 2000 rows
-and
-columns.
+and columns.
 
 ### Conclusion
 
@@ -73,6 +84,21 @@ columns.
    realistic environment.
 2. There is no "bad" solution. Even given the condition above, different solutions can perform better on different size
    of data, this pointing out the importance of adjusting the solution to the scope.
+
+### Sudoku Validator
+The Sudoku matrix is valid if each row, column, and submatrix contains all digits from 1 to n without repetition.
+This method iterates through each cell in the Sudoku puzzle, and for each cell, it checks whether the current value
+occurs in any of the corresponding row, column, and submatrix subsets. If the value has already occurred in any of
+the subsets, then the method returns false, indicating that the puzzle is invalid.
+
+The rough time complexity of this implementation corresponds to`O(2 *n^2)`, while space complexity
+is `O(n*Sqrt(n) + 2*n)` given the approach mentioned above, plus the size taken up by current row/column. It behaves
+similarly as the LatinSquareValidator's extra space implementation, even if in-place validation has been overall
+preferred over extra space. It would be worth considering comparing it with other implementation strategies in the future. 
+
+<p align="center">
+<img src="charts/Sudoku_2000.jpeg"  width="70%" height="30%">
+</p>
 
 ## Types of usage
 
@@ -112,6 +138,9 @@ Presumably you already have Java JRE installed on your machine, and Java classpa
 <p align="center">
 <img src="doc/Invalid_LatinSquare_in_use.png"  width="40%" height="30%">
 </p>
+<p align="center">
+<img src="doc/Sudoku_validator.png"  width="40%" height="30%">
+</p>
 
 ## Usage as stand-alone application
 
@@ -122,6 +151,6 @@ size grid, using the keyboard as input source:
 - Then you have to type the contents manually, separated by a space in one line or multiple lines separated by enter.
 - After reading the values in, your input is being displayed in a grid form for visual validation on user's side.
 - You are prompted to select the validation type: 1 corresponding to in-place validation method, 2 corresponding to
-  extra-space validation.
+  extra-space validation, while tye 3 stands for Sudoku validation.
 - The validation result is shown.
 

@@ -1,8 +1,6 @@
 package org.minimalna.latinsquare.util;
 
-import org.minimalna.latinsquare.LatinSquareExtraSpaceValidator;
-import org.minimalna.latinsquare.LatinSquareInPlaceValidator;
-import org.minimalna.latinsquare.LatinSquareValidator;
+import org.minimalna.latinsquare.*;
 
 import java.util.Scanner;
 
@@ -16,7 +14,7 @@ public class UserInputReader {
         int square[][] = null;
 
         int size;
-        System.out.println("Welcome to Latin Square Validator!");
+        System.out.println("Welcome to Latin Square/Sudoku Validator!");
         try {
             Scanner in = new Scanner(System.in);
             System.out.println("Enter the number of rows/columns of the matrix");
@@ -49,14 +47,16 @@ public class UserInputReader {
      *
      * @return the corresponding instance type of LatinSquareValidator based on the input
      */
-    public static LatinSquareValidator readUserInputSolutionType() {
+    public static SquareValidator readUserInputSolutionType() {
         int validationType;
-        LatinSquareValidator validator;
+        SquareValidator validator;
 
         System.out.println("""
                 Validation type of your choice:
-                [1] In-place validator
-                [2] Extra space validator""");
+                [1] Latin Square In-place validator
+                [2] Latin SquareExtra space validator
+                [3] Sudoku Optimized extra space validator
+                """);
 
         try (Scanner in = new Scanner(System.in)) {
             validationType = in.nextInt();
@@ -64,6 +64,7 @@ public class UserInputReader {
             switch (validationType) {
                 case 1 -> validator = new LatinSquareInPlaceValidator();
                 case 2 -> validator = new LatinSquareExtraSpaceValidator();
+                case 3 -> validator = new SudokuSpaceOptimizedValidator();
                 default -> throw new RuntimeException("Please enter a valid option");
             }
         } catch (Exception e) {
