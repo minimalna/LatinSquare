@@ -1,10 +1,9 @@
 package org.minimalna.latinsquare;
 
-import org.minimalna.latinsquare.util.LatinSquareGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.minimalna.latinsquare.util.TestUtil;
+import org.minimalna.latinsquare.util.LatinSquareGenerator;
 
 import java.util.stream.Stream;
 
@@ -61,7 +60,7 @@ class LatinSquareValidatorTest {
     @ParameterizedTest
     @MethodSource("provideValidators")
     void testValidate1000rowValidSquare(LatinSquareValidator validator) {
-        int[][] grid = TestUtil.generateLatinSquare(1000);
+        int[][] grid = LatinSquareGenerator.generateLatinSquare(1000);
 
         Assertions.assertTrue(validator.validate(grid));
     }
